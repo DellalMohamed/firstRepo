@@ -5,9 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Emai Validation</title>
 </head>
 <body>
-    
+    <div>
+        <h3>Email Validation Check</h3>
+        <form action="#" id="form" >
+            <div class="inputBox">
+                <input type="text" id="email" placeholder="Enter Email Address" onkeydown="validate()">
+                <span id="text"></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validate (){
+            var form =document.getElementById('form');
+            var email = document.getElementById('email').value;
+            var text = document.getElementById('text');
+            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if(email.match(pattern)){
+                form.classList.add("valid");
+                form.classList.remove("invalid")
+                text.innerHTML='your email is not valid';
+                text.style.color = '#0f0';
+                
+            }else{
+                form.classList.add("invalid");
+                form.classList.remove("valid");
+                text.innerHTML='your email is not valid';
+                text.style.color = '#f00'
+            } 
+            if (email==''){
+                form.classList.remove("invalid");
+                text.innerHTML=''
+            }
+        }
+    </script>
 </body>
 </html>
